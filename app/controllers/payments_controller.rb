@@ -43,12 +43,17 @@ class PaymentsController < ApplicationController
     @payments = Payment.all
     @calculated_payments = []
     @payments.each do |payment|
+      funcionario = Employee.find(payment.employees_id)
+
       @calculated_payments << {
         mes: payment.mes,
         ano: payment.ano,
         horas: payment.horas,
         valor: payment.valor,
-        employees_id: payment.employees_id,
+        funcionario: {
+          nome: funcionario.nome,
+          cpf: funcionario.cpf
+        },
         bruto: calculate_bruto(payment: payment),
         irrf: calculate_irrf(),  
         fgts: calculate_fgts(),
