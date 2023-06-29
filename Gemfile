@@ -14,6 +14,9 @@ gem "puma", "~> 5.0"
 
 gem 'httparty', '~> 0.17.1'
 
+gem 'bunny'
+gem 'connection_pool'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

@@ -18,6 +18,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
     if @payment.save
+      Publisher.new.publish_message(payment_params.to_s)
       render json: { folha: @payment, funcionario: @payment.employee }, status: :created, location: @payment
     else
       render json: @payment.errors, status: :unprocessable_entity
